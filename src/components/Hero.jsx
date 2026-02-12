@@ -68,9 +68,9 @@ export default function Hero() {
 
         <FadeItem>
           <div className="flex justify-center gap-6 mt-8">
-            <IconBtn><Github size={20} /></IconBtn>
-            <IconBtn><Linkedin size={20} /></IconBtn>
-            <IconBtn><Mail size={20} /></IconBtn>
+            <IconBtn href="https://github.com/nickiiegee"><Github size={20} /></IconBtn>
+            <IconBtn href="https://www.linkedin.com/in/monique-fick-geldenhuys-2b67741b3/"><Linkedin size={20} /></IconBtn>
+            <IconBtn href="mailto:monique.geldenhuys@gmail.com"><Mail size={20} /></IconBtn>
           </div>
         </FadeItem>
       </motion.div>
@@ -112,10 +112,15 @@ function FadeItem({ children }) {
   );
 }
 
-function IconBtn({ children }) {
+function IconBtn({ children, href }) {
   return (
-    <button className="p-3 transition border cursor-pointer rounded-xl bg-white/5 border-white/10 hover:bg-white/10">
+    <a 
+      href={href} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-block p-3 transition border cursor-pointer rounded-xl bg-white/5 border-white/10 hover:bg-white/10"
+    >
       {children}
-    </button>
+    </a>
   );
 }
