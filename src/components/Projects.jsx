@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Folder, Github, ExternalLink } from "lucide-react";
+import { ProjectList } from "../constants/ProjectsList";
 
 const projects = [
   {
@@ -74,11 +75,14 @@ export default function Projects() {
               Built
             </span>
           </h2>
+          <p className="mt-2 text-xs leading-relaxed text-gray-400">
+            Please note: these are sample projects created to demonstrate some my skills and are not actual products as I can not share details of my work projects.
+          </p>
         </motion.div>
 
         {/* Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
+          {ProjectList.map((project, i) => (
             <ProjectCard key={i} project={project} index={i} />
           ))}
         </div>

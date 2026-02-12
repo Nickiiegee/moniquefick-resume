@@ -19,6 +19,8 @@ export default function About() {
         "Inertia",
         "AWS",
         "Azure",
+        "Supabase",
+        "Plesk"
     ];
   return (
     <section
