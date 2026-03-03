@@ -4,6 +4,7 @@ export const ITExperience = [
         company: "Seatrench AS",
         period: "2025 - Present",
         description: [
+          "Updated the company's website from using plain HTML to using Vue to display all the services offered by the company and to be able to generate leads from the website giving it a more modernised look.",
           "Rebuild an entire internal tool used for managing offshore crew schedules and their availability, and tracking all vessels in the fleet.",
           "This tool is used by the PM's to keep track of available crew, get updated records, schedule crew for upcoming jobs and to keep track of the days worked for invoices.",
           "This tool is used by the operations team to keep track of all vessels, their locations, maintenance schedules and other important information.",
@@ -14,11 +15,11 @@ export const ITExperience = [
           "Added automation flows to Sharepoint to automatically notify managers of personnel requesting leave using Power Automate.",
           "Generated reports using Power BI to display important information to assist with decision making and to keep track of important KPIs.",
           "Created hubs and sites on Sharepoint to keep all important documents and information in one place for easy access by the team.",
-          "Updated the company's website from using plain HTML to using Vue to display all the services offered by the company and to be able to generate leads from the website giving it a more modernised look.",
         ],
         stack: [
           "JavaScript",
           "Vue",
+          "Vite",
           "Inertia",
           "PHP Laravel",
           "SQL",
@@ -33,19 +34,21 @@ export const ITExperience = [
         period: "2022 — 2025",
         description: [
           "Demonstrates experience through confidence in meetings, implementation and communications.",
-          "Directly bilng and showing value to the customer.",
-          "Able to lead engagements, and drive the narrative or lead the solution design on projects.",
-          "Deepening of skills and improving critical thinking.",
+          "Lead development project orchestrating a complex AI-powered document processing system. Key responsibilities included orchestrating the flow using AWS Step Functions, S3, Lambda, DynamoDB and Textract, and building a web-facing interface to correct text with confidence scores less than 90%.",
+          "Authorised users using Microsoft Entra ID.",
           "Used React to build dashboard for well-known financial organization in South Africa to display all financial transactions and list any errors or discrepancies found in the data. Used Redux for state management.",
-          "Built a job card system for an electrical company that will be released as a product that is open to the public soon to keep track of jobs done. This system lists all customers, job cards, suppliers and inventory items with integration to both PayFast for subscribing to the app and Quickbooks to create invoices.",
+          "Built a job card system for an electrical company to keep track of jobs done. This system lists all customers, job cards, suppliers and inventory items with integration to both PayFast for subscribing to the app and Quickbooks to create invoices.",
           "Hosted static site on AWS S3 for above-mentioned product (beta release in 2024).",
           "Built CI/CD pipelines using AWS services i.e CodePipeline, CodeBuild and Cloudformation for cross account deployments and the creation of resources across all accounts. Also wrote templates using AWS SAM to deploy Lambda scripts and AppSync schemas.",
           "Exposed endpoints using AWS API Gateway and AppSync to connect to AWS services to process data sent from the frontend. Services used includes Lambda, RDS, DynamoDB and Cognito to name a few.",
           "Used JWT tokens together with AWS Cognito for authenticating a user to access the application and to AWS resources.",
-          "Mentored and motivated development team in getting tasks done in time and upskilling them.",
           "Team lead: leading a team of 6 members (the largest pod in the development team). Conducting monthly 1:1's, overseeing their projects and overall well-being, managing leave days and give appropriate feedback to HOD.",
+          "Mentored and motivated development team in getting tasks done in time and upskilling them.",
           "Perform code reviews to ensure all code is aligned with company standards.",
           "Contribute to monthly forums to keep team updated with latest tech trends.",
+          "Directly billing and showing value to the customer.",
+          "Able to lead engagements, and drive the narrative or lead the solution design on projects.",
+          "Deepening of skills and improving critical thinking.",
         ],
         stack: [
           "JavaScript",
@@ -100,12 +103,14 @@ export const certificates = [
   {
     role: "Powers of AI",
     company: "Saras AI Institute",
-    period: "2025"
+    period: "2025",
+    fileUrl: "/moniquefick-resume/certificates/poai.pdf"
   },
   {
     role: "JavaScript Unit Testing - The Practical Guide",
     company: "Udemy",
-    period: "2023"
+    period: "2023",
+    fileUrl: "/moniquefick-resume/certificates/JSUnitTestingCert.pdf"
   },
   {
     role: "AWS Developer Associate",
@@ -122,15 +127,18 @@ export const certificates = [
       "S3",
       "Step Functions",
     ],
+    fileUrl: "/moniquefick-resume/certificates/aws_associate.pdf"
   },
   {
     role: "Python PCEP Certification",
     company: "Python Institute",
-    period: "2021"
+    period: "2021",
+    fileUrl: "/moniquefick-resume/certificates/pcep.pdf"
   },
   {
     role: "AWS Certified Cloud Practitioner",
     company: "Amazon Web Services",
-    period: "Dec 2020 - Dec 2023"
+    period: "Dec 2020 - Dec 2023",
+    fileUrl: "/moniquefick-resume/certificates/aws_ccp.pdf"
   }
 ];

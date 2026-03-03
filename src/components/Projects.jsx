@@ -2,54 +2,6 @@ import { motion } from "framer-motion";
 import { Folder, Github, ExternalLink } from "lucide-react";
 import { ProjectList } from "../constants/ProjectsList";
 
-const projects = [
-  {
-    name: "CloudScale",
-    description:
-      "Auto-scaling infrastructure platform that dynamically adjusts cloud resources based on traffic patterns. Reduced hosting costs by 40%.",
-    tech: ["Go", "Kubernetes", "AWS", "Terraform"],
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "DevFlow",
-    description:
-      "Developer productivity dashboard aggregating metrics from GitHub, Jira, and CI/CD pipelines.",
-    tech: ["React", "Node.js", "GraphQL", "D3.js"],
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "NeuralChat",
-    description:
-      "Real-time AI-powered chat app with sentiment analysis, smart replies and summarization.",
-    tech: ["Python", "FastAPI", "WebSocket", "OpenAI"],
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "PacketSniffer",
-    description:
-      "Network analysis tool for debugging HTTP/WebSocket traffic during development.",
-    tech: ["Rust", "TCP/IP", "CLI"],
-    github: "#"
-  },
-  {
-    name: "GitViz",
-    description:
-      "Interactive visualization of repository history and contributor activity.",
-    tech: ["TypeScript", "Three.js", "Git API"],
-    github: "#"
-  },
-  {
-    name: "CryptoTracker",
-    description:
-      "Real-time crypto portfolio tracker with alerts, P&L analytics and tax reporting.",
-    tech: ["React Native", "Firebase", "REST APIs"],
-    github: "#"
-  }
-];
-
 /* ---------------- PAGE ---------------- */
 
 export default function Projects() {
@@ -120,7 +72,7 @@ function ProjectCard({ project, index }) {
             <a href={project.github} target="_blank">
               <Github
                 size={18}
-                className="transition hover:text-white"
+                className="transition hover:text-purple-400"
               />
             </a>
           )}
@@ -129,7 +81,7 @@ function ProjectCard({ project, index }) {
             <a href={project.demo} target="_blank">
               <ExternalLink
                 size={18}
-                className="transition hover:text-white"
+                className="transition hover:text-purple-400"
               />
             </a>
           )}

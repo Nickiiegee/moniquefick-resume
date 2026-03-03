@@ -1,16 +1,28 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {ITExperience, otherExperience, certificates} from '../constants/ExperienceList';
-import { Briefcase, Code2, ChevronDown, ChevronUp, ShieldCheck } from "lucide-react";
+import { Briefcase, Code2, ChevronDown, ChevronUp, ShieldCheck, Eye } from "lucide-react";
 import { useState } from "react";
-
+import PdfViewer from "../utils/PdfViewer";
 
 
 const Experience = () => {
   const [tab, setTab] = useState("engineering");
+  const [selectedCert, setSelectedCert] = useState(null);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
 
   const jobs = tab === "engineering" ? ITExperience : tab === "other" ? otherExperience : certificates;
 
-    return (
+  const onViewCertificate = (job) => {
+    setSelectedCert(job);
+    setIsViewerOpen(true);
+  };
+
+  const onCloseViewer = () => {
+    setSelectedCert(null);
+    setIsViewerOpen(false);
+  };
+
+  return (
     <section
       id="experience"
       className="min-h-screen bg-[#0b0f14] text-white px-4 py-20 sm:px-6 sm:py-24 lg:py-28"
@@ -72,7 +84,7 @@ const Experience = () => {
               className="space-y-8 sm:space-y-14"
             >
               {jobs.map((job, i) => (
-                <TimelineItem key={i} job={job} isOtherExperience={tab === "other"} />
+                <TimelineItem key={i} job={job} isOtherExperience={tab === "other"} isCertificate={tab === "certificates"} onViewCertificate={onViewCertificate} />
               ))}
             </motion.div>
           </AnimatePresence>
@@ -80,6 +92,13 @@ const Experience = () => {
         </div>
         </motion.div>
         </div>
+
+      <PdfViewer
+        visible={isViewerOpen}
+        fileUrl={selectedCert?.fileUrl}
+        title={selectedCert?.role}
+        onClose={onCloseViewer}
+      />
     </section>
     );
 };
@@ -101,7 +120,7 @@ function TabBtn({ children, active, icon, ...props }) {
   );
 }
 
-function TimelineItem({ job, isOtherExperience = false }) {
+function TimelineItem({ job, isOtherExperience = false, isCertificate = false, onViewCertificate }) {
   const [isExpanded, setIsExpanded] = useState(false);
   
   // Handle different data structures
@@ -162,15 +181,24 @@ function TimelineItem({ job, isOtherExperience = false }) {
             <h3 className="text-lg font-semibold sm:text-xl">{getRoleTitle()}</h3>
             <p className="text-sm text-cyan-400 sm:text-base">{getCompany()}</p>
           </div>
-          <span className="mt-1 text-sm text-gray-400 sm:mt-0">{getPeriod()}</span>
+            <span className="mt-1 text-sm text-gray-400 sm:mt-0">{getPeriod()}</span>
         </div>
 
-        <div className="mb-3 sm:mb-4">
-          {displayDescriptions.map((desc, index) => (
-            <li key={index} className="mb-2 ml-3 text-sm text-gray-400 sm:ml-4 sm:text-base last:mb-0">
-              {desc}
-            </li>
-          ))}
+        <div className="mb-3 overflow-hidden sm:mb-4">
+          <AnimatePresence mode="popLayout">
+            {displayDescriptions.map((desc, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                transition={{ duration: 0.2 }}
+                className="ml-3 text-sm text-gray-400 sm:ml-4 sm:text-base"
+              >
+                {desc}
+              </motion.li>
+            ))}
+          </AnimatePresence>
         </div>
 
         {hasMultipleDescriptions && (
@@ -203,6 +231,16 @@ function TimelineItem({ job, isOtherExperience = false }) {
               </span>
             ))}
           </div>
+        )}
+
+        {isCertificate && job.fileUrl && (
+          <button
+            onClick={() => onViewCertificate(job)}
+            className="flex items-center gap-2 px-4 py-2 mt-4 text-sm text-gray-400 border rounded cursor-pointer bg-white/5 border-white/10 hover:text-cyan-500 hover:border-cyan-500"
+          >
+            <Eye size={16} />
+            View Certificate
+          </button>
         )}
       </motion.div>
     </motion.div>

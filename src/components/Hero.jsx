@@ -118,7 +118,7 @@ function IconBtn({ children, href }) {
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="inline-block p-3 transition border cursor-pointer rounded-xl bg-white/5 border-white/10 hover:bg-white/10"
+      className="inline-block p-3 transition border cursor-pointer rounded-xl bg-white/5 border-white/10 hover:bg-white/10 hover:text-cyan-500 hover:border-cyan-500"
     >
       {children}
     </a>
