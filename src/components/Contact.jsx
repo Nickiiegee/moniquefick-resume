@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Github, Phone, Linkedin, Locate, ExternalLink } from "lucide-react";
+import { Mail, Github, Phone, Linkedin, Locate, ExternalLink, File, Download } from "lucide-react";
 
 export default function About() {
   return (
@@ -38,12 +38,13 @@ export default function About() {
           <InfoCard icon={<Phone size={18} />} title="Phone" subtitle="+27 73 746 2696" color="text-cyan-400" />
           <InfoCard icon={<Linkedin size={18} />} title="LinkedIn" subtitle="monique-fick" color="text-purple-500" link="https://www.linkedin.com/in/monique-fick-geldenhuys-2b67741b3/" />
           <InfoCard icon={<Locate size={18} />} title="Location" subtitle="Cape Town, South Africa" color="text-cyan-400" />
+          <InfoCard icon={<File size={18} />} title="Resume" subtitle="Download my one page resume" color="text-purple-500" resume={true} />
         </motion.div>
     </section>
   );
 }
 
-function InfoCard({ icon, title, subtitle, color, link }) {
+function InfoCard({ icon, title, subtitle, color, link, resume }) {
   const getBackgroundFromColor = (textColor) => {
     if (textColor.includes('cyan')) return 'bg-cyan-400/10';
     if (textColor.includes('purple')) return 'bg-purple-500/10';
@@ -74,6 +75,15 @@ function InfoCard({ icon, title, subtitle, color, link }) {
             className="absolute my-auto text-gray-400 transition duration-300 ease-in-out right-4 hover:text-purple-500"
           >
             <ExternalLink size={16} />
+          </a>
+        )}
+        {resume && (
+          <a
+            href="/moniquefick-resume/MoniqueFickResume.pdf"
+            download="MoniqueFickResume.pdf"
+            className="absolute my-auto text-gray-400 transition duration-300 ease-in-out right-4 hover:text-purple-500"
+          >
+            <Download size={16} />
           </a>
         )}
       </div>
