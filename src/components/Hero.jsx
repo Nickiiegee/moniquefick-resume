@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { ReactTyped } from "react-typed";
@@ -16,14 +15,14 @@ export default function Hero() {
     "Code Monkey",
   ];
   const scrollToAbout = () => {
-    document
-      .getElementById("about")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="header" className="relative flex items-center justify-center flex-1">
-
+    <section
+      id="header"
+      className="relative flex items-center justify-center flex-1"
+    >
       {/* grid background */}
       <div className="absolute inset-0 bg-grid opacity-20" />
 
@@ -34,9 +33,9 @@ export default function Hero() {
           hidden: {},
           visible: {
             transition: {
-              staggerChildren: 0.25
-            }
-          }
+              staggerChildren: 0.25,
+            },
+          },
         }}
         className="z-10 text-center"
       >
@@ -48,7 +47,8 @@ export default function Hero() {
 
         <FadeItem>
           <h1 className="mt-3 text-6xl font-bold md:text-8xl">
-            I'm<br/>
+            I'm
+            <br />
             <span className="text-transparent bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text">
               Monique Fick
             </span>
@@ -58,19 +58,25 @@ export default function Hero() {
         <FadeItem>
           <p className="mt-4 font-mono text-xl text-gray-400">
             <ReactTyped
-            strings={typedList}
-            typeSpeed={100}
-            backSpeed={50}
-            loop
+              strings={typedList}
+              typeSpeed={100}
+              backSpeed={50}
+              loop
             />
           </p>
         </FadeItem>
 
         <FadeItem>
           <div className="flex justify-center gap-6 mt-8">
-            <IconBtn href="https://github.com/nickiiegee"><Github size={20} /></IconBtn>
-            <IconBtn href="https://www.linkedin.com/in/monique-fick-geldenhuys-2b67741b3/"><Linkedin size={20} /></IconBtn>
-            <IconBtn href="mailto:monique.geldenhuys@gmail.com"><Mail size={20} /></IconBtn>
+            <IconBtn href="https://github.com/nickiiegee">
+              <Github size={20} />
+            </IconBtn>
+            <IconBtn href="https://www.linkedin.com/in/monique-fick-geldenhuys-2b67741b3/">
+              <Linkedin size={20} />
+            </IconBtn>
+            <IconBtn href="mailto:monique.geldenhuys@gmail.com">
+              <Mail size={20} />
+            </IconBtn>
           </div>
         </FadeItem>
       </motion.div>
@@ -87,7 +93,7 @@ export default function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{
             repeat: Infinity,
-            duration: 1.4
+            duration: 1.4,
           }}
           className="text-2xl"
         >
@@ -103,7 +109,7 @@ function FadeItem({ children }) {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
+        visible: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.7 }}
     >
@@ -114,9 +120,9 @@ function FadeItem({ children }) {
 
 function IconBtn({ children, href }) {
   return (
-    <a 
-      href={href} 
-      target="_blank" 
+    <a
+      href={href}
+      target="_blank"
       rel="noopener noreferrer"
       className="inline-block p-3 transition border cursor-pointer rounded-xl bg-white/5 border-white/10 hover:bg-white/10 hover:text-cyan-500 hover:border-cyan-500"
     >

@@ -18,7 +18,8 @@ export const ProjectList = [
   {
     id: 2,
     name: "Mock Daily Expenses - 2025",
-    description: "A simple app that helps to keep track of daily expenses supporting actions like exporting to CSV and clearing the list.",
+    description:
+      "A simple app that helps to keep track of daily expenses supporting actions like exporting to CSV and clearing the list.",
     image: EXPENSES,
     demo: "https://mock-daily-expense-tracker.vercel.app/",
     tech: ["React"],

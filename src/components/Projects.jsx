@@ -11,7 +11,6 @@ export default function Projects() {
       className="min-h-screen bg-[#0b0f14] text-white px-6 py-28"
     >
       <div className="mx-auto max-w-7xl">
-
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +27,9 @@ export default function Projects() {
             </span>
           </h2>
           <p className="mt-2 text-xs leading-relaxed text-gray-400">
-            Please note: these are sample projects created to demonstrate some my skills and are not actual products as I can not share details of my work projects.
+            Please note: these are sample projects created to demonstrate some
+            my skills and are not actual products as I can not share details of
+            my work projects.
           </p>
         </motion.div>
 
@@ -64,16 +65,12 @@ function ProjectCard({ project, index }) {
     >
       {/* Header row */}
       <div className="flex items-center justify-between mb-6">
-
         <Folder className="text-cyan-400" size={28} />
 
         <div className="flex gap-4 text-gray-400">
           {project.github && (
             <a href={project.github} target="_blank">
-              <Github
-                size={18}
-                className="transition hover:text-purple-400"
-              />
+              <Github size={18} className="transition hover:text-purple-400" />
             </a>
           )}
 

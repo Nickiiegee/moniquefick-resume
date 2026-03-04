@@ -1,13 +1,7 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { useActiveSection } from "../hooks/useActiveSection";
 
-const links = [
-  "About",
-  "Experience",
-  "Projects",
-  "Testimonials",
-  "Contact"
-];
+const links = ["About", "Experience", "Projects", "Testimonials", "Contact"];
 
 export default function Navbar() {
   const activeSection = useActiveSection();
@@ -19,9 +13,7 @@ export default function Navbar() {
   };
 
   const goToHeader = () => {
-    document
-      .getElementById("header")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("header")?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <motion.nav
@@ -31,7 +23,11 @@ export default function Navbar() {
       className="fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md bg-black/40 border-white/10"
     >
       <div className="flex items-center justify-between max-w-6xl px-6 py-4 mx-auto">
-        <div className="font-mono text-lg text-cyan-400" onClick={goToHeader} style={{cursor: 'pointer'}}>
+        <div
+          className="font-mono text-lg text-cyan-400"
+          onClick={goToHeader}
+          style={{ cursor: "pointer" }}
+        >
           &gt; ~/resume
         </div>
 
@@ -40,7 +36,7 @@ export default function Navbar() {
             <a
               key={link}
               onClick={() => scrollToLink(link)}
-              className={`transition cursor-pointer hover:text-cyan-400 ${activeSection === link.toLowerCase() ? 'text-cyan-400' : ''}`}
+              className={`transition cursor-pointer hover:text-cyan-400 ${activeSection === link.toLowerCase() ? "text-cyan-400" : ""}`}
             >
               {link}
             </a>

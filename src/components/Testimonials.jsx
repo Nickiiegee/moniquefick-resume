@@ -11,7 +11,6 @@ export default function Testimonials() {
       className="min-h-screen bg-[#0b0f14] text-white px-6 py-28"
     >
       <div className="mx-auto max-w-7xl">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,9 +71,7 @@ function TestimonialCard({ testimonial, index }) {
 
       {/* Author */}
       <div className="flex items-center gap-4">
-        <div
-          className="flex items-center justify-center w-10 h-10 text-sm font-semibold border rounded-full  bg-linear-to-br from-cyan-500/20 to-purple-500/20 border-white/10"
-        >
+        <div className="flex items-center justify-center w-10 h-10 text-sm font-semibold border rounded-full bg-linear-to-br from-cyan-500/20 to-purple-500/20 border-white/10">
           {testimonial.initials}
         </div>
 

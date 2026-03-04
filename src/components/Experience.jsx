@@ -1,16 +1,31 @@
 import { AnimatePresence, motion } from "framer-motion";
-import {ITExperience, otherExperience, certificates} from '../constants/ExperienceList';
-import { Briefcase, Code2, ChevronDown, ChevronUp, ShieldCheck, Eye } from "lucide-react";
+import {
+  ITExperience,
+  otherExperience,
+  certificates,
+} from "../constants/ExperienceList";
+import {
+  Briefcase,
+  Code2,
+  ChevronDown,
+  ChevronUp,
+  ShieldCheck,
+  Eye,
+} from "lucide-react";
 import { useState } from "react";
 import PdfViewer from "../utils/PdfViewer";
-
 
 const Experience = () => {
   const [tab, setTab] = useState("engineering");
   const [selectedCert, setSelectedCert] = useState(null);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
-  const jobs = tab === "engineering" ? ITExperience : tab === "other" ? otherExperience : certificates;
+  const jobs =
+    tab === "engineering"
+      ? ITExperience
+      : tab === "other"
+        ? otherExperience
+        : certificates;
 
   const onViewCertificate = (job) => {
     setSelectedCert(job);
@@ -28,7 +43,6 @@ const Experience = () => {
       className="min-h-screen bg-[#0b0f14] text-white px-4 py-20 sm:px-6 sm:py-24 lg:py-28"
     >
       <div className="grid items-center max-w-4xl mx-auto md:max-w-6xl">
-
         {/* LEFT TEXT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -41,57 +55,63 @@ const Experience = () => {
           <h2 className="mb-6 text-5xl font-bold">
             Where I've{" "}
             <span className="text-transparent bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text">
-                Worked
+              Worked
             </span>
           </h2>
-                  <div className="flex flex-wrap gap-2 mb-8 sm:gap-3 sm:mb-16">
-          <TabBtn
-            active={tab === "engineering"}
-            onClick={() => setTab("engineering")}
-            icon={<Code2 size={16} />}
-          >
-            Software Engineering
-          </TabBtn>
-
-          <TabBtn
-            active={tab === "other"}
-            onClick={() => setTab("other")}
-            icon={<Briefcase size={16} />}
-          >
-            Other Experience
-          </TabBtn>
-
-          <TabBtn
-            active={tab === "certificates"}
-            onClick={() => setTab("certificates")}
-            icon={<ShieldCheck size={16} />}
-          >
-            Certificates
-          </TabBtn>
-        </div><div className="relative">
-
-          {/* vertical line */}
-          <div className="absolute left-1.5 sm:left-3 top-0 bottom-0 w-0.5 bg-cyan-500/30" />
-
-        <div className="relative min-h-100">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={tab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.35 }}
-              className="space-y-8 sm:space-y-14"
+          <div className="flex flex-wrap gap-2 mb-8 sm:gap-3 sm:mb-16">
+            <TabBtn
+              active={tab === "engineering"}
+              onClick={() => setTab("engineering")}
+              icon={<Code2 size={16} />}
             >
-              {jobs.map((job, i) => (
-                <TimelineItem key={i} job={job} isOtherExperience={tab === "other"} isCertificate={tab === "certificates"} onViewCertificate={onViewCertificate} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        </div>
+              Software Engineering
+            </TabBtn>
+
+            <TabBtn
+              active={tab === "other"}
+              onClick={() => setTab("other")}
+              icon={<Briefcase size={16} />}
+            >
+              Other Experience
+            </TabBtn>
+
+            <TabBtn
+              active={tab === "certificates"}
+              onClick={() => setTab("certificates")}
+              icon={<ShieldCheck size={16} />}
+            >
+              Certificates
+            </TabBtn>
+          </div>
+          <div className="relative">
+            {/* vertical line */}
+            <div className="absolute left-1.5 sm:left-3 top-0 bottom-0 w-0.5 bg-cyan-500/30" />
+
+            <div className="relative min-h-100">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={tab}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                  className="space-y-8 sm:space-y-14"
+                >
+                  {jobs.map((job, i) => (
+                    <TimelineItem
+                      key={i}
+                      job={job}
+                      isOtherExperience={tab === "other"}
+                      isCertificate={tab === "certificates"}
+                      onViewCertificate={onViewCertificate}
+                    />
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </motion.div>
-        </div>
+      </div>
 
       <PdfViewer
         visible={isViewerOpen}
@@ -100,7 +120,7 @@ const Experience = () => {
         onClose={onCloseViewer}
       />
     </section>
-    );
+  );
 };
 
 function TabBtn({ children, active, icon, ...props }) {
@@ -120,43 +140,50 @@ function TabBtn({ children, active, icon, ...props }) {
   );
 }
 
-function TimelineItem({ job, isOtherExperience = false, isCertificate = false, onViewCertificate }) {
+function TimelineItem({
+  job,
+  isOtherExperience = false,
+  isCertificate = false,
+  onViewCertificate,
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   // Handle different data structures
   const getRoleTitle = () => {
     if (isOtherExperience) {
-      return job.title.split(' - ')[0]; // Extract role from "Role - Company (Period)"
+      return job.title.split(" - ")[0]; // Extract role from "Role - Company (Period)"
     }
     return job.role;
   };
-  
+
   const getCompany = () => {
     if (isOtherExperience) {
-      return job.title.split(' - ')[1]?.split(' (')[0] || ''; // Extract company
+      return job.title.split(" - ")[1]?.split(" (")[0] || ""; // Extract company
     }
     return job.company;
   };
-  
+
   const getPeriod = () => {
     if (isOtherExperience) {
       const match = job.title.match(/\(([^)]+)\)/);
-      return match ? match[1] : '';
+      return match ? match[1] : "";
     }
     return job.period;
   };
-  
+
   const getDescriptions = () => {
     if (isOtherExperience) {
       return job.duty || [];
     }
     return job.description || [];
   };
-  
+
   const descriptions = getDescriptions();
   const hasMultipleDescriptions = descriptions.length > 1;
-  const displayDescriptions = isExpanded ? descriptions : descriptions.slice(0, 1);
-  
+  const displayDescriptions = isExpanded
+    ? descriptions
+    : descriptions.slice(0, 1);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 30 }}
@@ -178,10 +205,14 @@ function TimelineItem({ job, isOtherExperience = false, isCertificate = false, o
       >
         <div className="flex flex-col mb-3 sm:flex-row sm:justify-between sm:items-start sm:mb-2">
           <div>
-            <h3 className="text-lg font-semibold sm:text-xl">{getRoleTitle()}</h3>
+            <h3 className="text-lg font-semibold sm:text-xl">
+              {getRoleTitle()}
+            </h3>
             <p className="text-sm text-cyan-400 sm:text-base">{getCompany()}</p>
           </div>
-            <span className="mt-1 text-sm text-gray-400 sm:mt-0">{getPeriod()}</span>
+          <span className="mt-1 text-sm text-gray-400 sm:mt-0">
+            {getPeriod()}
+          </span>
         </div>
 
         <div className="mb-3 overflow-hidden sm:mb-4">

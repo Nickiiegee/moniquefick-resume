@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export const useActiveSection = () => {
-  const [activeSection, setActiveSection] = useState('#');
+  const [activeSection, setActiveSection] = useState("#");
 
   useEffect(() => {
-    const sections = ['header', 'about', 'experience', 'projects', 'testimonials', 'contact'];
+    const sections = [
+      "header",
+      "about",
+      "experience",
+      "projects",
+      "testimonials",
+      "contact",
+    ];
 
     const elements = sections
       .map((id) => document.getElementById(id))
@@ -18,13 +25,13 @@ export const useActiveSection = () => {
 
         if (visible.length > 0) {
           const id = visible[0].target.id;
-          setActiveSection(id === 'header' ? '#' : id);
+          setActiveSection(id === "header" ? "#" : id);
         }
       },
       {
         threshold: [0.25, 0.5, 0.75],
-        rootMargin: '-20% 0px -30% 0px'
-      }
+        rootMargin: "-20% 0px -30% 0px",
+      },
     );
 
     elements.forEach((el) => observer.observe(el));
